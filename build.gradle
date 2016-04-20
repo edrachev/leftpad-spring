@@ -31,4 +31,7 @@ dependencies {
     compile("com.h2database:h2")
     
     compile("org.springframework.boot:spring-boot-starter-security")
+    
+    compile("org.springframework.boot:spring-boot-starter-websocket")
+    compile ("org.webjars:jquery:2.2.3")
 }
