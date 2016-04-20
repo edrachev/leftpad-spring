@@ -34,4 +34,7 @@ dependencies {
     
     compile("org.springframework.boot:spring-boot-starter-websocket")
     compile ("org.webjars:jquery:2.2.3")
+    
+    
+    compile ("org.springframework.boot:spring-boot-starter-aop")
 }
