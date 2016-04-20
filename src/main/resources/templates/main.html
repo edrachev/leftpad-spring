@@ -4,6 +4,8 @@
 	<meta charset="UTF-8" />
 	<title>Padder</title>
 	<link rel='stylesheet' href='/webjars/bootstrap/3.1.0/css/bootstrap.min.css' />
+	<script type="text/javascript" src="/webjars/jquery/2.2.3/jquery.js"></script>
+	<script type="text/javascript" src="app.js"></script>
 </head>
 <body>
 	<div layout:fragment="content">	
@@ -11,6 +13,7 @@
 		<div>You may pad your springs here!</div>
 		
 		<div th:replace="padder :: padder"></div>
+		<div th:replace="lastpadded :: lastpadded"></div>
 	</div>
 </body>
 </html>
