@@ -1,6 +1,12 @@
 package leftpad.forms;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class PadderForm {
+    	@NotNull
+	@NotEmpty
 	private String input;
 	private String output;
 	

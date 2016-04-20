@@ -9,9 +9,10 @@
 	<section th:fragment="padder">
 		<form action="" th:action="${(#mvc.url('AC#doPadding')).build()}"
 			th:object="${padderForm}" method="POST">
-			<div class="form-group">
+			<div class="form-group" th:class="${#fields.hasErrors('input')}? has-error">
 				<label class="control-label" for="input">Input</label>
 				<input id="input" type="text" class="form-control" th:field="*{input}" />
+				<span th:if="${#fields.hasErrors('input')}" th:errors="*{input}">Input Error</span>
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="output">Output</label>
