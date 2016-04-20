@@ -1,5 +1,7 @@
 package leftpad.controllers;
 
+import java.util.concurrent.CompletionStage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +11,11 @@ import leftpad.beans.LastPadded;
 import leftpad.forms.PadderForm;
 import leftpad.services.PadderService;
 
-
 @Controller
 public class ApplicationController {
     private final PadderService padderService;
     private final LastPadded lastPadded;
-    
+
     @Autowired
     public ApplicationController(PadderService padderService, LastPadded lastPadded) {
 	this.padderService = padderService;
@@ -28,12 +29,14 @@ public class ApplicationController {
 	model.addAttribute("padderForm", form);
 	return "main";
     }
-    
+
     @RequestMapping("/padding")
-    public String doPadding(PadderForm form) {
+    public CompletionStage<String> doPadding(PadderForm form) {
 	String input = form.getInput();
 	lastPadded.setValue(input);
-	form.setOutput(padderService.pad(input));
-	return "main";
+	return padderService.padAsync(form.getInput()).thenApply(output -> {
+	    form.setOutput(output);
+	    return "main";
+	});
     }
 }
