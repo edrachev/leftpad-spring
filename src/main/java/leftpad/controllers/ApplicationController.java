@@ -15,19 +15,22 @@ import leftpad.beans.LastPadded;
 import leftpad.forms.PadderForm;
 import leftpad.services.PadderHistoryService;
 import leftpad.services.PadderService;
+import leftpad.websocket.PadPublisher;
 
 @Controller
 public class ApplicationController {
 	private final PadderService padderService;
 	private final LastPadded lastPadded;
 	private final PadderHistoryService padderHistoryService;
+	private final PadPublisher padPublisher;
 
 	@Autowired
 	public ApplicationController(PadderService padderService, LastPadded lastPadded,
-			PadderHistoryService padderHistoryService) {
+			PadderHistoryService padderHistoryService, PadPublisher padPublisher) {
 		this.padderService = padderService;
 		this.lastPadded = lastPadded;
 		this.padderHistoryService = padderHistoryService;
+		this.padPublisher = padPublisher;
 	}
 
 	@RequestMapping("")
@@ -45,6 +48,7 @@ public class ApplicationController {
 		return padderService.padAsync(form.getInput()).thenApply(output -> {
 			form.setOutput(output);
 			padderHistoryService.log(input, output);
+			padPublisher.sendMessage(input, output);
 			return "main";
 		});
 	}
