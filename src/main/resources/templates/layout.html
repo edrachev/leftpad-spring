@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Padder</title>
+<link rel='stylesheet'
+	href='/webjars/bootstrap/3.1.0/css/bootstrap.min.css' />
+</head>
+<body>
+	<div th:replace="header :: header"></div>
+	<div class="container" style="padding-top: 75px;">
+		<div class="jumbotron">
+			<div layout:fragment="content"></div>
+		</div>
+	</div>
+</body>
+</html>
