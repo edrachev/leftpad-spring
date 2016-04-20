@@ -20,7 +20,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="item : ${historyItems}">
-					<td><a th:text="${item.id}" style="display: block;" th:href="${(#mvc.url('AC#historyItem')).build()}+${item.id}">Id</a></td>
+					<td><a th:text="${item.id}" style="display: block;" th:href="${(#mvc.url('AC#historyItem').arg(1, item.id)).build()}">Id</a></td>
 					<td th:text="${item.input}">Input</td>
 					<td th:text="${item.output}">Output</td>
 				</tr>
