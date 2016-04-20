@@ -1,13 +1,16 @@
 <!doctype html>
-<html layout:decorator="layout" lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8" />
 	<title>Padder</title>
-	<link rel='stylesheet' href='/webjars/bootstrap/3.1.0/css/bootstrap.min.css' />
+	<link th:replace="bootstrap :: bootstrap"></link>
 </head>
 <body>
-	<div layout:fragment="content">	
-		Hello, traveller!
+	<div th:replace="header :: header"></div>
+	<div class="container" style="padding-top: 75px;">
+		<div class="jumbotron">
+			Hello, traveller!
+		</div>
 	</div>
 </body>
 </html>
