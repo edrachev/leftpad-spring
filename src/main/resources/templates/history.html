@@ -1,0 +1,31 @@
+<!doctype html>
+<html layout:decorator="layout" lang="en"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Padder</title>
+<link rel='stylesheet'
+	href='/webjars/bootstrap/3.1.0/css/bootstrap.min.css' />
+</head>
+<body>
+	<div layout:fragment="content">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Input</th>
+					<th>Output</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item : ${historyItems}">
+					<td><a th:text="${item.id}" style="display: block;" th:href="${(#mvc.url('AC#historyItem').arg(1, item.id)).build()}">Id</a></td>
+					<td th:text="${item.input}">Input</td>
+					<td th:text="${item.output}">Output</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
